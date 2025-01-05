@@ -1,0 +1,31 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild internal/ts/app.ts --bundle --outfile=static/js/out.js --minify --sourcemap",
+    "watch": "concurrently \"esbuild internal/ts/app.ts --bundle --outfile=static/js/out.js --watch --sourcemap\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "franken-ui": "^1.1.0",
+    "htmx.org": "^1.9.12",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.10.5",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.24.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

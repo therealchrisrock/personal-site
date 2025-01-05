@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "esbuild internal/ts/app.ts --bundle --outfile=static/js/out.js --minify --sourcemap",
     "watch": "concurrently \"esbuild internal/ts/app.ts --bundle --outfile=static/js/out.js --watch --sourcemap\"",
     "prepare": "husky"
@@ -13,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "franken-ui": "^1.1.0",
+    "flowbite": "^2.5.2",
     "htmx.org": "^1.9.12",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"

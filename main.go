@@ -30,7 +30,7 @@ func main() {
 			http.NotFound(w, r)
 			return
 		}
-		middleware.Chain(w, r, template.Home("Templ Quickstart"))
+		middleware.Chain(w, r, template.Home("My Personal Site | Home"))
 	})
 
 	fmt.Printf("server is running on port %s\n", os.Getenv("PORT"))

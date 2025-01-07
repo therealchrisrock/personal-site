@@ -7,7 +7,7 @@
     "build:production": "node esbuild.config.js --minify --bundle",
     "build:dev": "node esbuild.config.js --sourcemap --watch",
     "build:analysis": "node esbuild.config.js --metafile --minify",
-    "watch": "concurrently npx esbuild \"./internal/ts/**/*.ts --bundle --outdir=./static/js --format=esm --splitting --metafile=tmp/meta.json --minify\"",
+    "watch": "npx esbuild ./internal/ts/**/*.ts --bundle --outdir=./static/js --format=esm --splitting --metafile=tmp/meta.json --sourcemap --watch",
     "display": "esbuild-visualizer --metadata=tmp/meta.json --open=true --filename tmp/stats.html",
     "analysis": "bun run build && bun run display",
     "analysis:treemap": "bun run build && bun run display --sunburst",
@@ -26,17 +26,17 @@
     "three": "^0.172.0"
   },
   "devDependencies": {
-    "postcss": "^8.4.49",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@types/bun": "latest",
+    "@types/d3": "^7.4.3",
     "@types/node": "^22.10.5",
     "commitlint": "^19.6.1",
-    "concurrently": "^9.1.2",
     "esbuild": "^0.24.2",
     "esbuild-visualizer": "^0.7.0",
     "flowbite-typography": "^1.0.5",
     "husky": "^9.1.7",
+    "postcss": "^8.4.49",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },

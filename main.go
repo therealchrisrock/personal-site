@@ -24,19 +24,24 @@ func main() {
 
 	mux.HandleFunc("GET /favicon.ico", view.ServeFavicon)
 	mux.HandleFunc("GET /static/", view.ServeStaticFiles)
-
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)
 			return
 		}
-		middleware.Chain(w, r, template.Home("My Personal Site | Home"))
+		middleware.Chain(w, r, template.Home("Chris Rock | Home"))
 	})
 
+	mux.HandleFunc("GET /mantracker", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/mantracker" {
+			http.NotFound(w, r)
+			return
+		}
+		middleware.Chain(w, r, template.Mantracker("Chris Rock | Home"))
+	})
 	fmt.Printf("server is running on port %s\n", os.Getenv("PORT"))
 	err = http.ListenAndServe(":"+os.Getenv("PORT"), mux)
 	if err != nil {
 		fmt.Println(err)
 	}
-
 }

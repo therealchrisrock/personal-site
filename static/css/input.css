@@ -1,3 +1,119 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/static/font/FiraCode-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/static/font/FiraCode-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/static/font/FiraCode-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/static/font/FiraCode-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/static/font/FiraCode-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@layer base {
+    address {
+        @apply not-italic
+    }
+    a[target="_blank"]:not(.no-indicator):after {
+        content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+        margin: 0 3px 0 5px;
+    }
+}
+
+@layer components {
+    .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+    }
+    .hover-underline-animation::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #1E9CED;
+        transition: transform 0.25s ease-out;
+    }
+
+    .hover-underline-animation:hover::after {
+        transform: scaleX(1);
+    }
+
+    .hover-underline-animation.left::after {
+        transform-origin: bottom right;
+    }
+
+    .hover-underline-animation.left:hover::after {
+        transform-origin: bottom left;
+    }
+
+    .hover-underline-animation.center::after {
+        transform-origin: bottom center;
+    }
+
+    .hover-underline-animation.center:hover::after {
+        transform-origin: bottom center;
+    }
+
+    .hover-underline-animation.right::after {
+        transform-origin: bottom left;
+    }
+
+    .hover-underline-animation.right:hover::after {
+        transform-origin: bottom right;
+    }
+}
+
+@layer components {
+    .comma-seperated li + li:before {
+            content: ", ";
+    }
+    #cloud9-container {
+        @apply fixed top-0 left-0 w-full h-full cursor-pointer;
+    }
+}
+
+@layer utilities {
+    .fade-in-out {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 1s ease-in, visibility 0s ease-in 1s;
+    }
+    .fade-in-out.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 1s ease-in, visibility 0s ease-in 0s;
+    }
+}

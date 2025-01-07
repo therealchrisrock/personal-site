@@ -1,2 +1,7 @@
-import 'htmx.org';
-import 'flowbite';
+import * as htmx  from 'htmx.org';
+
+window.htmx = htmx;
+declare global {
+    interface Window { htmx: typeof htmx; }
+}
+

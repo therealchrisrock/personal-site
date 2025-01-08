@@ -1,6 +1,5 @@
 const scriptTag = document.currentScript as HTMLScriptElement;
 const libraryType = scriptTag?.dataset.library; // Read the "data-library" attribute
-console.log('libraryType', libraryType, scriptTag)
 async function loadLibrary() {
     switch (libraryType) {
         case "easter-egg":

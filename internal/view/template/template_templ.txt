@@ -1,0 +1,3 @@
+<html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/static/css/output.css\"><script type=\"module\" src=\"/static/js/app.js\"></script><title>
+</title></head><body class=\"font-mono\"><main class=\"p-6 grid gap-4\">
+</main></body></html>

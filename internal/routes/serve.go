@@ -1,4 +1,4 @@
-package view
+package routes
 
 import (
 	"net/http"

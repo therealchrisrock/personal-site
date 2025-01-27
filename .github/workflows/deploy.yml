@@ -48,7 +48,7 @@ jobs:
         port: 22
         script: |
           echo "Deploying Go application..."
-          if [ -f /tmp/chrisrock.ca ]; then
+          if [ -f /tmp/static/compiled/chrisrock.ca ]; then
             mv /tmp/static/compiled/chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
             sudo chmod +x /var/www/chrisrock.ca/chrisrock.ca
           else
@@ -57,7 +57,7 @@ jobs:
           echo "Deploying compiled JS & CSS..."
           # if [ -d /tmp/static/compiled ]; then
           #   rm -rf /var/www/chrisrock.ca/static/compiled
-          #   mv /tmp/static/compiled /var/www/chrisrock.ca/static/compiled
+          #   mv /tmp/static/compiled /var/www/chrisrock.ca/static/
           # else
           #   echo "Compiled files not found!"
           # fi

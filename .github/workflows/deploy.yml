@@ -50,7 +50,7 @@ jobs:
           echo "Deploying Go application..."
           if [ -f /tmp/static/compiled/chrisrock.ca ]; then
             mv /tmp/static/compiled/chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
-            sudo chmod +x /var/www/chrisrock.ca/chrisrock.ca
+            chmod +x /var/www/chrisrock.ca/chrisrock.ca
           else
             echo "Go application not found!"
           fi
@@ -62,10 +62,6 @@ jobs:
             echo "Compiled files not found!"
           fi
 
-        
-
-          echo "Listing /var/www/chrisrock.ca directory on server..."
-          ls -la /var/www/chrisrock.ca
 
           echo "Restarting service with sudo..."
           sudo systemctl restart chrisrock.ca.service

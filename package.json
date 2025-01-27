@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:production": "node esbuild.config.js --minify --bundle",
     "build:dev": "node esbuild.config.js --sourcemap --watch",
     "build:analysis": "node esbuild.config.js --metafile --minify",
     "watch": "npx esbuild ./internal/ts/**/*.ts --bundle --outdir=./static/js --format=esm --splitting --metafile=tmp/meta.json --sourcemap --watch",
@@ -13,7 +12,9 @@
     "analysis:treemap": "bun run build && bun run display --sunburst",
     "analysis:network": "bun run build && bun run display --template network",
     "prepare": "husky",
-    "build": "npx esbuild ./internal/ts/**/*.ts --bundle --outdir=./static/js --format=esm --splitting --metafile=tmp/meta.json --minify"
+    "build:css": "npx tailwind -i './static/css/input.css' -o './static/css/output.css'", 
+    "build:ts": "npx esbuild ./internal/ts/**/*.ts --bundle --outdir=./static/js --format=esm --splitting --metafile=tmp/meta.json --minify",
+    "build": "bun run build:css && bun run build:ts"
   },
   "keywords": [],
   "author": "",

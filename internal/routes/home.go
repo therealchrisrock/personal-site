@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"xerus/internal/middleware"
+	"xerus/internal/view"
 	"xerus/internal/view/page"
 )
 
@@ -13,5 +14,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	middleware.Chain(w, r, page.Home("Chris Rock | Home"))
+	head := view.DefaultHead()
+	middleware.Chain(w, r, page.Home(head))
 }

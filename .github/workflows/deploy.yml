@@ -55,12 +55,12 @@ jobs:
             echo "Go application not found!"
           fi
           echo "Deploying compiled JS & CSS..."
-          if [ -d /tmp/compiled ]; then
-            rm -rf /var/www/chrisrock.ca/static/compiled
-            mv /tmp/compiled /var/www/chrisrock.ca/static/compiled
-          else
-            echo "Compiled files not found!"
-          fi
+          # if [ -d /tmp/compiled ]; then
+          #   rm -rf /var/www/chrisrock.ca/static/compiled
+          #   mv /tmp/compiled /var/www/chrisrock.ca/static/compiled
+          # else
+          #   echo "Compiled files not found!"
+          # fi
 
         
 

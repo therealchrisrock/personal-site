@@ -35,6 +35,13 @@ jobs:
         ls -la static/js
         ls -la chrisrock.ca
     # Deploy to VPS via SSH
+    - name: Transfer files to server
+      run: |
+        scp -i ${{ secrets.VPS_PRIVATE_KEY }} -o StrictHostKeyChecking=no -r static/css/output.css ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/output.css
+        scp -i ${{ secrets.VPS_PRIVATE_KEY }} -o StrictHostKeyChecking=no -r static/js ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/js
+        scp -i ${{ secrets.VPS_PRIVATE_KEY }} -o StrictHostKeyChecking=no chrisrock.ca ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/chrisrock.ca
+    
+    # Deploy to VPS via SSH
     - name: Deploy to server
       uses: appleboy/ssh-action@v0.1.6
       with:
@@ -43,34 +50,37 @@ jobs:
         key: ${{ secrets.VPS_PRIVATE_KEY }}
         port: 22
         script: |
+          echo "Creating directories on server..."
           mkdir -p /var/www/chrisrock.ca/static/css
           mkdir -p /var/www/chrisrock.ca/static/js
 
-        
           echo "Deploying compiled CSS..."
-          if [ -f ./static/css/output.css ]; then
+          if [ -f /tmp/output.css ]; then
             rm -f /var/www/chrisrock.ca/static/css/output.css
-            mv ./static/css/output.css /var/www/chrisrock.ca/static/css/output.css
+            mv /tmp/output.css /var/www/chrisrock.ca/static/css/output.css
           else
             echo "CSS file not found!"
           fi
 
           echo "Deploying compiled JS..."
-          if [ -d ./static/js ]; then
+          if [ -d /tmp/js ]; then
             rm -rf /var/www/chrisrock.ca/static/js
-            mv ./static/js /var/www/chrisrock.ca/static/js
+            mv /tmp/js /var/www/chrisrock.ca/static/js
           else
             echo "JS directory not found!"
           fi
 
           echo "Deploying Go application..."
-          if [ -f ./chrisrock.ca ]; then
+          if [ -f /tmp/chrisrock.ca ]; then
             rm -f /var/www/chrisrock.ca/chrisrock.ca
-            mv ./chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
+            mv /tmp/chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
             chmod +x /var/www/chrisrock.ca/chrisrock.ca
           else
             echo "Go application not found!"
           fi
 
-          systemctl restart chrisrock.ca.service
-          
+          echo "Listing /var/www/chrisrock.ca directory on server..."
+          ls -la /var/www/chrisrock.ca
+
+          echo "Restarting service with sudo..."
+          sudo systemctl restart chrisrock.ca.service

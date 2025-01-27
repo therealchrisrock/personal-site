@@ -26,10 +26,10 @@ jobs:
 
     # Build Go application
     - name: Build Go application
-      run: go build -o chrisrock.ca
+      run: go build -o static/compiled/chrisrock.ca
     # Transfer files to VPS via SCP
     - name: Transfer files to server
-      uses: appleboy/ssh-action@v0.1.6
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
@@ -47,25 +47,22 @@ jobs:
         key: ${{ secrets.VPS_PRIVATE_KEY }}
         port: 22
         script: |
-          echo "Creating directories on server..."
-          sudo mkdir -p /var/www/chrisrock.ca/static/css
-          sudo mkdir -p /var/www/chrisrock.ca/static/js
-
+          echo "Deploying Go application..."
+          if [ -f /tmp/chrisrock.ca ]; then
+            mv /tmp/compiled/chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
+            sudo chmod +x /var/www/chrisrock.ca/chrisrock.ca
+          else
+            echo "Go application not found!"
+          fi
           echo "Deploying compiled JS & CSS..."
           if [ -d /tmp/compiled ]; then
             rm -rf /var/www/chrisrock.ca/static/compiled
             mv /tmp/compiled /var/www/chrisrock.ca/static/compiled
           else
-            echo "CSS file not found!"
+            echo "Compiled files not found!"
           fi
 
-          echo "Deploying Go application..."
-          if [ -f /tmp/chrisrock.ca ]; then
-            mv /tmp/chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
-            sudo chmod +x /var/www/chrisrock.ca/chrisrock.ca
-          else
-            echo "Go application not found!"
-          fi
+        
 
           echo "Listing /var/www/chrisrock.ca directory on server..."
           ls -la /var/www/chrisrock.ca

@@ -1,0 +1,57 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up Bun
+    - name: Set up Bun
+      run: |
+        curl -fsSL https://bun.sh/install | bash
+        echo "::add-path::$(bun env | grep PATH | cut -d= -f2)"
+
+    # Install Node.js dependencies and build frontend
+    - name: Install dependencies and build frontend
+      run: |
+        bun install
+        bun run build
+
+    # Build Go application
+    - name: Build Go application
+      run: go build -o chrisrock.ca
+
+    # Deploy to VPS via SSH
+    - name: Deploy to server
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_PRIVATE_KEY }}
+        port: 22
+        script: |
+          mkdir -p /var/www/chrisrock.ca/static/css
+          mkdir -p /var/www/chrisrock.ca/static/js
+
+          # Deploy compiled CSS
+          rm -f /var/www/chrisrock.ca/static/css/output.css
+          mv ./static/css/output.css /var/www/chrisrock.ca/static/css/output.css
+
+          # Deploy compiled JS
+          rm -rf /var/www/chrisrock.ca/static/js
+          mv ./static/js /var/www/chrisrock.ca/static/js
+
+          # Deploy Go application
+          rm -f /var/www/chrisrock.ca/chrisrock.ca
+          mv ./chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
+          chmod +x /var/www/chrisrock.ca/chrisrock.ca
+          systemctl restart chrisrock.ca.service

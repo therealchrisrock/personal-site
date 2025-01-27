@@ -16,9 +16,8 @@ jobs:
 
     # Set up Bun
     - name: Set up Bun
-      run: |
-        curl -fsSL https://bun.sh/install | bash
-        echo "::add-path::$(bun env | grep PATH | cut -d= -f2)"
+      uses: oven-sh/setup-bun@v2
+
 
     # Install Node.js dependencies and build frontend
     - name: Install dependencies and build frontend

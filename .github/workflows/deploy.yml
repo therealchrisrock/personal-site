@@ -24,11 +24,22 @@ jobs:
       run: |
         bun install
         bun run build
-
+    - name: Debug file paths
+      run: |
+        echo "Listing files in the current directory:"
+        ls -R .
+        echo "Checking static/css:"
+        ls -R ./static/css
+        echo "Checking static/js:"
+        ls -R ./static/js
+        echo "Checking Go binary:"
+        ls -R ./chrisrock.ca
+          
     # Build Go application
     - name: Build Go application
       run: go build -o chrisrock.ca
 
+      # Debugging step to confirm file paths
     # Deploy to VPS via SSH
     - name: Deploy to server
       uses: appleboy/ssh-action@v0.1.6

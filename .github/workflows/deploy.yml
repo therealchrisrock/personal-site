@@ -27,22 +27,16 @@ jobs:
     # Build Go application
     - name: Build Go application
       run: go build -o chrisrock.ca
-
-    # Debugging step to confirm file paths
-    - name: List files for debugging
-      run: |
-        echo "Listing static/compiled directory:"
-        ls -la static/compiled
-        echo "Listing static/compiled/js directory:"
-        ls -la static/compiled/js
-        echo "Listing root directory:"
-        ls -la
-
     # Transfer files to VPS via SCP
     - name: Transfer files to server
-      run: |
-        scp -i ${{ secrets.VPS_PRIVATE_KEY }} -o StrictHostKeyChecking=no -r static/compiled ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/compiled
-        scp -i ${{ secrets.VPS_PRIVATE_KEY }} -o StrictHostKeyChecking=no chrisrock.ca ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/chrisrock.ca
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_PRIVATE_KEY }}
+        port: 22
+        source: static/compiled/*
+        target: /tmp/compiled
 
     # Deploy to VPS via SSH
     - name: Deploy to server

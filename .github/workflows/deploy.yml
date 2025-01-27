@@ -24,6 +24,20 @@ jobs:
       run: |
         bun install
         bun run build
+    - name: Debug frontend build
+      run: |
+        echo "Running bun build"
+        bun run build
+        echo "Build output:"
+        ls -R ./static
+    - name: Debug backend build
+      run: |
+        echo "Running go build"
+        go build -o chrisrock.ca
+        echo "Build output:"
+        ls -R .
+
+        
     - name: Debug file paths
       run: |
         echo "Listing files in the current directory:"

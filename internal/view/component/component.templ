@@ -1,5 +1,9 @@
 package component
 
+import (
+    "xerus/internal/view"
+)
+
 templ Banner() {
     <header class="p-6 flex flex-col justify-between">
     </header>
@@ -11,24 +15,31 @@ templ TextAndTitle(title string, text string) {
         <p class="text-sm">{text}</p>
     </div>
 }
-templ Card(title string, description string, avatar templ.Attributes, tags []string) {
-    <article class="format border border-opacity-20 p-5">
-        <div class="justify-between flex items-center w-full">
-            <h3 class="text-lg mb-0">{ title }</h3>
-            if avatar != nil {
-                <img class="inline-block size-8 rounded-full ring-2 ring-white mb-2" { avatar... }>
-            }
-        </div>
-        <p class="line-clamp-3 mt-2">{ description }</p>
-        if len(tags) != 0 {
-            <ul class="comma-seperated list-none pl-0 text-sm mt-8">
-                for _, tag := range tags {
-                    <li class="inline pl-0">{tag}</li>
-                }
-            </ul>
-        }
 
-    </article>
+templ Card(title string, cta templ.Attributes, description string, thumbnail *view.CardThumbnail, tags []string) {
+        <div class="relative">
+            <a {cta...} class="no-indicator hover:shadow transition-shadow">
+                <article class="format border border-opacity-20 p-5 h-full  pr-12">
+                    <div class="justify-between flex items-center w-full">
+                        <h3 class="text-lg mb-0 font-medium {%  %}">{ title }</h3>
+                    </div>
+                    <p class="line-clamp-3 mt-2">{ description }</p>
+                    if len(tags) != 0 {
+                        <ul class="comma-seperated list-none pl-0 text-sm mt-8">
+                            for _, tag := range tags {
+                                <li class="inline pl-0 font-light">{tag}</li>
+                            }
+                        </ul>
+                    }
+
+                </article>
+            </a>
+            if thumbnail != nil {
+                <a target="_blank" rel="noopener noreferrer" class="no-indicator absolute top-4 right-4 z-10" {thumbnail.Link...}>
+                    <img class="inline-block size-8 rounded-full ring-2 ring-white" { thumbnail.Img... }>
+                </a>
+            }
+    </div>
 }
 
 templ Modal() {

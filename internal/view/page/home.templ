@@ -2,9 +2,12 @@ package page
 import (
     "xerus/internal/view/component"
     "xerus/internal/view/template"
+	"xerus/internal/view"
+	
 )
-templ Home(title string) {
-    @template.Base(nil) {
+templ Home(head view.DocumentHead) {
+    @template.Base(head) {
+        {{ thumbnail := templ.Attributes{"src": "/static/media/github-logo.png"} }} 
         <header  class="text-lg space-y-6">
             <hgroup>
                 <h1 class="font-bold">Chris Rock</h1>
@@ -12,26 +15,52 @@ templ Home(title string) {
             </hgroup>
             <address class="not-italic">
                 <a rel="author noopener noreferrer" class="email hover-underline-animation left after:bg-black" href="mailto:chris@tilde.technology">chris@tilde.technology</a><br />
-                <a class="no-indicator hover-underline-animation left after:bg-black" rel="noopener noreferrer" target="_blank" href="https://github.com/therealchrisrock">&#x40;TheRealChrisRock</a> / <a rel="noopener noreferrer" class="no-indicator hover-underline-animation left after:bg-black" target="_blank" href="https://github.com/giffen-good">&#x40;Giffen-Good</a><br />
+                <a class="no-indicator hover-underline-animation left after:bg-black" rel="noopener noreferrer" target="_blank" href="https://github.com/therealchrisrock">&#x40;TheRealChrisRock</a>
             </address>
         </header>
         <section class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-lg">
-            <a href="/" class=" hover:shadow transition-shadow">
                 @component.Card(
                     "No Maintenance",
-                    "Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
-                    templ.Attributes{"src": "/static/media/logo-placeholder.png"},
-                    []string{"Design", "Development", "Consulting", "Ecommerce", "CRO"},
+                    templ.Attributes{"href": "https://nomaintenance.us", "target": "_blank", "rel": "noopener noreferrer"},
+                    "Commissioned by No Maintenance, a clothing company based in Los Angeles, to build their webshop and refine their digital strategy.",
+                    &view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/no-maintenance/nomaintenance-webshop"}},
+                    []string{"Design", "Development", "CRO", "Hydrogen", "Consulting", "Ecommerce"},
                 )
-            </a>
-            <a href="/" class=" hover:shadow transition-shadow">
                 @component.Card(
-                    "The Swap Dapp",
-                    "Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
-                    templ.Attributes{"src": "/static/media/logo-placeholder.png"},
-                    []string{"Design", "Development", "Consulting", "Ecommerce", "CRO"},
+                    "The Poor Man's Token Derugger",
+                    templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp", "target": "_blank", "rel": "noopener noreferrer"},
+                    "This dapp was designed and developed as part of a joint effort to derug various NFT projects in the Solana ecosystem.",
+                    &view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
+                    []string{"Design", "Development", "Web3", "Solana"},
                 )
-            </a>
+                @component.Card(
+                    "Semantic Document Search",
+                    templ.Attributes{"href": "https://github.com/therealchrisrock/document-search", "target": "_blank", "rel": "noopener noreferrer"},
+                    "Extracts Markdown and epub into vector embeddings, constructs FAISS index, and queries against them using GPT's completion API.",
+                    &view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/document-search"}},
+                    []string{"Development", "AI", "Similarity Search", "GPT"},
+                )
+                @component.Card(
+                    "Sean Brown",
+                    templ.Attributes{"href": "https://curvesbyseanbrown.com/", "target": "_blank", "rel": "noopener noreferrer"},
+                    "Hired to design and build their websites, including their blog & webshops using a variety of technologies.",
+                    nil,
+                    []string{"Design", "Development", "Ecommerce", "Shopify", "Wordpress", "NextJS"},
+                )
+                @component.Card(
+                    "Casa Bambu",
+                    templ.Attributes{"href": "https://casabambuwestbay.com", "target": "_blank", "rel": "noopener noreferrer"},
+                    "Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
+                    &view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
+                    []string{"Design", "Development", "Web3", "Solana"},
+                )
+                @component.Card(
+                    "Power 2 Motivate",
+                    templ.Attributes{"href": "https://power2motivate.com/", "target": "_blank", "rel": "noopener noreferrer"},
+                    "Hired by Carlton One as part of a joint effort to refactor their codebase, rebuild their UI, and redesign their custom CMS",
+                    nil,
+                    []string{"Design", "Development", "DB Design", "CMS Design", "Project Management"},
+                )
         </section>
         <script src="/static/js/dynamic.js" data-library="easter-egg"></script>
     }

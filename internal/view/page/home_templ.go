@@ -9,11 +9,12 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"xerus/internal/view"
 	"xerus/internal/view/component"
 	"xerus/internal/view/template"
 )
 
-func Home(title string) templ.Component {
+func Home(head view.DocumentHead) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -46,39 +47,78 @@ func Home(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header class=\"text-lg space-y-6\"><hgroup><h1 class=\"font-bold\">Chris Rock</h1><h2>Software Developer currently in Toronto</h2></hgroup><address class=\"not-italic\"><a rel=\"author noopener noreferrer\" class=\"email hover-underline-animation left after:bg-black\" href=\"mailto:chris@tilde.technology\">chris@tilde.technology</a><br><a class=\"no-indicator hover-underline-animation left after:bg-black\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://github.com/therealchrisrock\">&#x40;TheRealChrisRock</a> / <a rel=\"noopener noreferrer\" class=\"no-indicator hover-underline-animation left after:bg-black\" target=\"_blank\" href=\"https://github.com/giffen-good\">&#x40;Giffen-Good</a><br></address></header><section class=\"mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-lg\"><a href=\"/\" class=\" hover:shadow transition-shadow\">")
+			thumbnail := templ.Attributes{"src": "/static/media/github-logo.png"}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header class=\"text-lg space-y-6\"><hgroup><h1 class=\"font-bold\">Chris Rock</h1><h2>Software Developer currently in Toronto</h2></hgroup><address class=\"not-italic\"><a rel=\"author noopener noreferrer\" class=\"email hover-underline-animation left after:bg-black\" href=\"mailto:chris@tilde.technology\">chris@tilde.technology</a><br><a class=\"no-indicator hover-underline-animation left after:bg-black\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://github.com/therealchrisrock\">&#x40;TheRealChrisRock</a></address></header><section class=\"mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-lg\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = component.Card(
 				"No Maintenance",
-				"Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
-				templ.Attributes{"src": "/static/media/logo-placeholder.png"},
-				[]string{"Design", "Development", "Consulting", "Ecommerce", "CRO"},
+				templ.Attributes{"href": "https://nomaintenance.us", "target": "_blank", "rel": "noopener noreferrer"},
+				"Commissioned by No Maintenance, a clothing company based in Los Angeles, to build their webshop and refine their digital strategy.",
+				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/no-maintenance/nomaintenance-webshop"}},
+				[]string{"Design", "Development", "CRO", "Hydrogen", "Consulting", "Ecommerce"},
 			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</a> <a href=\"/\" class=\" hover:shadow transition-shadow\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = component.Card(
-				"The Swap Dapp",
-				"Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
-				templ.Attributes{"src": "/static/media/logo-placeholder.png"},
-				[]string{"Design", "Development", "Consulting", "Ecommerce", "CRO"},
+				"The Poor Man's Token Derugger",
+				templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp", "target": "_blank", "rel": "noopener noreferrer"},
+				"This dapp was designed and developed as part of a joint effort to derug various NFT projects in the Solana ecosystem.",
+				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
+				[]string{"Design", "Development", "Web3", "Solana"},
 			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</a></section><script src=\"/static/js/dynamic.js\" data-library=\"easter-egg\"></script>")
+			templ_7745c5c3_Err = component.Card(
+				"Semantic Document Search",
+				templ.Attributes{"href": "https://github.com/therealchrisrock/document-search", "target": "_blank", "rel": "noopener noreferrer"},
+				"Extracts Markdown and epub into vector embeddings, constructs FAISS index, and queries against them using GPT's completion API.",
+				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/document-search"}},
+				[]string{"Development", "AI", "Similarity Search", "GPT"},
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = component.Card(
+				"Sean Brown",
+				templ.Attributes{"href": "https://curvesbyseanbrown.com/", "target": "_blank", "rel": "noopener noreferrer"},
+				"Hired to design and build their websites, including their blog & webshops using a variety of technologies.",
+				nil,
+				[]string{"Design", "Development", "Ecommerce", "Shopify", "Wordpress", "NextJS"},
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = component.Card(
+				"Casa Bambu",
+				templ.Attributes{"href": "https://casabambuwestbay.com", "target": "_blank", "rel": "noopener noreferrer"},
+				"Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
+				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
+				[]string{"Design", "Development", "Web3", "Solana"},
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = component.Card(
+				"Power 2 Motivate",
+				templ.Attributes{"href": "https://power2motivate.com/", "target": "_blank", "rel": "noopener noreferrer"},
+				"Hired by Carlton One as part of a joint effort to refactor their codebase, rebuild their UI, and redesign their custom CMS",
+				nil,
+				[]string{"Design", "Development", "DB Design", "CMS Design", "Project Management"},
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section><script src=\"/static/js/dynamic.js\" data-library=\"easter-egg\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = template.Base(nil).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = template.Base(head).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

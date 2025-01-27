@@ -1,5 +1,5 @@
 // Inactivity time in seconds
-const INACTIVITY_MS = 10 * 1000;
+const INACTIVITY_MS = 15 * 1000;
 let inactivityTimeout: number;
 // Element to show/hide
 let isVisible = false;
@@ -7,6 +7,7 @@ let isVisible = false;
 export async function init() {
     const container = document.createElement('div')
     container.id = 'cloud9-container'
+    container.style.zIndex = "50"
     container.style.opacity = '0'
     container.style.visibility = 'hidden';
     container.style.pointerEvents = 'none'

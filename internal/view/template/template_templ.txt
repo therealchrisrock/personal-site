@@ -1,3 +1,16 @@
-<html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/static/css/output.css\"><script type=\"module\" src=\"/static/js/app.js\"></script><title>
-</title></head><body class=\"font-mono\"><main class=\"p-6 grid gap-4\">
+<html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/static/css/output.css\"><script type=\"module\" src=\"/static/js/app.js\"></script><!-- Page Information --><title>
+</title><meta name=\"description\" content=\"
+\"><link rel=\"canonical\" href=\"
+\"><!-- Open Graph Meta Tags --><meta property=\"og:title\" content=\"
+\"><meta property=\"og:description\" content=\"
+\"><meta property=\"og:image\" content=\"
+\"><meta property=\"og:type\" content=\"
+\"><meta property=\"og:url\" content=\"
+\"><!-- Twitter Meta Tags --><meta name=\"twitter:card\" content=\"
+\"><meta name=\"twitter:title\" content=\"
+\"><meta name=\"twitter:description\" content=\"
+\"><meta name=\"twitter:image\" content=\"
+\"><!-- SEO Meta Tags --><meta name=\"author\" content=\"
+\"><meta name=\"robots\" content=\"
+\"><!-- Page Assets --><link rel=\"icon\" href=\"/favicon.ico\" type=\"image/x-icon\"><!-- Custom CSS --><!-- Custom JS --><!-- Page Assets --><link rel=\"icon\" href=\"/favicon.ico\" type=\"image/x-icon\"><!-- Custom CSS --></head><body class=\"font-mono\"><main class=\"p-6 grid gap-4\">
 </main></body></html>

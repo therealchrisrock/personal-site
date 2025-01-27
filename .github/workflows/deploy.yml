@@ -46,16 +46,31 @@ jobs:
           mkdir -p /var/www/chrisrock.ca/static/css
           mkdir -p /var/www/chrisrock.ca/static/js
 
-          # Deploy compiled CSS
-          rm -f /var/www/chrisrock.ca/static/css/output.css
-          mv ./static/css/output.css /var/www/chrisrock.ca/static/css/output.css
+        
+          echo "Deploying compiled CSS..."
+          if [ -f ./static/css/output.css ]; then
+            rm -f /var/www/chrisrock.ca/static/css/output.css
+            mv ./static/css/output.css /var/www/chrisrock.ca/static/css/output.css
+          else
+            echo "CSS file not found!"
+          fi
 
-          # Deploy compiled JS
-          rm -rf /var/www/chrisrock.ca/static/js
-          mv ./static/js /var/www/chrisrock.ca/static/js
+          echo "Deploying compiled JS..."
+          if [ -d ./static/js ]; then
+            rm -rf /var/www/chrisrock.ca/static/js
+            mv ./static/js /var/www/chrisrock.ca/static/js
+          else
+            echo "JS directory not found!"
+          fi
 
-          # Deploy Go application
-          rm -f /var/www/chrisrock.ca/chrisrock.ca
-          mv ./chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
-          chmod +x /var/www/chrisrock.ca/chrisrock.ca
+          echo "Deploying Go application..."
+          if [ -f ./chrisrock.ca ]; then
+            rm -f /var/www/chrisrock.ca/chrisrock.ca
+            mv ./chrisrock.ca /var/www/chrisrock.ca/chrisrock.ca
+            chmod +x /var/www/chrisrock.ca/chrisrock.ca
+          else
+            echo "Go application not found!"
+          fi
+
           systemctl restart chrisrock.ca.service
+          

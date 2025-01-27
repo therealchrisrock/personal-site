@@ -1,0 +1,1 @@
+var t=document.currentScript,a=t?.dataset.library;async function e(){switch(a){case"easter-egg":await(await import("./easter-egg.js")).init();break;case"d3":(await import("./mantracker.js")).initD3Visualization();break;default:console.error("Unknown library type")}}document.addEventListener("DOMContentLoaded",e);

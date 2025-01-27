@@ -1,4 +1,4 @@
-<html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/static/css/output.css\"><script type=\"module\" src=\"/static/js/app.js\"></script><!-- Page Information --><title>
+<html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/static/compiled/output.css\"><script type=\"module\" src=\"/static/compiled/js/app.js\"></script><!-- Page Information --><title>
 </title><meta name=\"description\" content=\"
 \"><link rel=\"canonical\" href=\"
 \"><!-- Open Graph Meta Tags --><meta property=\"og:title\" content=\"

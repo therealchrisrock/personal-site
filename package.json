@@ -12,8 +12,8 @@
     "analysis:treemap": "bun run build && bun run display --sunburst",
     "analysis:network": "bun run build && bun run display --template network",
     "prepare": "husky",
-    "build:css": "npx tailwind -i './static/css/input.css' -o './static/css/output.css'", 
-    "build:ts": "npx esbuild ./internal/ts/**/*.ts --bundle --outdir=./static/js --format=esm --splitting --metafile=tmp/meta.json --minify",
+    "build:css": "npx tailwind -i './static/css/input.css' -o './static/compiled/output.css'", 
+    "build:ts": "npx esbuild ./internal/ts/**/*.ts --bundle --outdir=./static/compiled/js --format=esm --splitting --metafile=tmp/meta.json --minify",
     "build": "bun run build:css && bun run build:ts"
   },
   "keywords": [],

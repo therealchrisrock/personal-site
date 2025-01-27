@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "NodeNext",
-    "outDir": "./static/js",
+    "outDir": "./static/compiled/js",
     "rootDir": "./",
     "strict": true,
     "esModuleInterop": true,

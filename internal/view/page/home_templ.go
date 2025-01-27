@@ -112,7 +112,7 @@ func Home(head view.DocumentHead) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section><script src=\"/static/js/dynamic.js\" data-library=\"easter-egg\"></script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section><script src=\"/static/compiled/js/dynamic.js\" data-library=\"easter-egg\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

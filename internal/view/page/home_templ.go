@@ -95,7 +95,7 @@ func Home(head view.DocumentHead) templ.Component {
 			templ_7745c5c3_Err = component.Card(
 				"Casa Bambu",
 				templ.Attributes{"href": "https://casabambuwestbay.com", "target": "_blank", "rel": "noopener noreferrer"},
-				"Originally commissioned by Telefónica and Mozilla Corporation as part of the joint effort during the development of Firefox OS.",
+				"A bespoke webapp to facilitate the creation and management of rental bookings and invoicing.",
 				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
 				[]string{"Design", "Development", "Web3", "Solana"},
 			).Render(ctx, templ_7745c5c3_Buffer)
@@ -105,7 +105,7 @@ func Home(head view.DocumentHead) templ.Component {
 			templ_7745c5c3_Err = component.Card(
 				"Power 2 Motivate",
 				templ.Attributes{"href": "https://power2motivate.com/", "target": "_blank", "rel": "noopener noreferrer"},
-				"Hired by Carlton One as part of a joint effort to refactor their codebase, rebuild their UI, and redesign their custom CMS",
+				"Hired by Carlton One to refactor their codebase, rebuild their UI, and redesign the structure of their custom CMS",
 				nil,
 				[]string{"Design", "Development", "DB Design", "CMS Design", "Project Management"},
 			).Render(ctx, templ_7745c5c3_Buffer)

@@ -1,7 +1,7 @@
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 // Inactivity time in seconds
-const INACTIVITY_MS = 15 * 1000;
+const INACTIVITY_MS = 1 * 1000;
 let inactivityTimeout: number;
 // Element to show/hide
 let isVisible = false;

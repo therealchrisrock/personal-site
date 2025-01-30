@@ -1,5 +1,5 @@
 // Inactivity time in seconds
-const INACTIVITY_MS = 15 * 1000;
+const INACTIVITY_MS = 1 * 1000;
 let inactivityTimeout: number;
 // Element to show/hide
 let isVisible = false;
@@ -11,7 +11,7 @@ export async function init() {
     container.style.opacity = '0'
     container.style.visibility = 'hidden';
     container.style.pointerEvents = 'none'
-    container.style.transition = 'opacity 1s ease-in, visibility 0s ease-in 0s';
+    container.style.transition = 'opacity 1s ease-in, visibility 0s';
     document.body.appendChild(container)
     const CLOUD9 = await import('./cloud9.js')
     CLOUD9.init(container)
@@ -20,7 +20,7 @@ export async function init() {
 
     // Utility function for fading in/out
     function fadeElement(element: HTMLElement, fadeIn: boolean, duration = 500): void {
-        element.style.transition = `opacity ${duration}ms, ${fadeIn ? 'visibility 0s ease-in 0s' : 'visibility 0s ease-in 1s'}`;
+        element.style.transition = `opacity ${duration}ms, ${fadeIn ? 'visibility 0s' : 'visibility 0s ease-in 1s'}`;
         element.style.opacity = fadeIn ? "1" : "0";
         element.style.visibility = fadeIn ? "visible" : "hidden";
         element.style.pointerEvents = fadeIn ? "auto" : "none"; // Prevent interaction when hidden
@@ -43,12 +43,40 @@ export async function init() {
         resetInactivityTimer(); // Restart timer after hiding
     }
 
-// Add event listeners for user interactions
-    ["mousemove", "mousedown"].forEach((event) =>
-        window.addEventListener(event, resetInactivityTimer)
-    );
-    ["click", "keypress", "keydown"].forEach((event) =>
-        window.addEventListener(event, handleUserInteraction)
-    );
 
+/**
+ * List of user engagement events.
+ * Add or remove event types based on your requirements.
+ */
+const userEngagementEvents = [
+    'click',
+    'mousedown',
+    'mouseup',
+    'mousemove',
+    'touchstart',
+    'touchend',
+    'touchmove',
+    'keydown',
+    'keyup',
+    'scroll',
+    'focus',
+    'blur'
+  ];
+const resetEvents = [
+    'click',
+    'keyup',
+    'keydown'
+]
+    function handleUserEngagement(event: Event): void {
+        console.log(`User engaged with a "${event.type}" event.`);
+        if (isVisible && resetEvents.indexOf(event.type, -1)) fadeElement(container, false);
+            resetInactivityTimer(); // Restart timer after hiding
+        // Put your custom logic here.
+        // E.g., trigger analytics, mark the session as active, etc.
+    }å
+  
+  // Attach listeners for each event in the list
+  userEngagementEvents.forEach((eventName) => {
+    window.addEventListener(eventName, handleUserEngagement, { passive: true });
+  });
 }

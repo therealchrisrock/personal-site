@@ -139,7 +139,9 @@ function createScene(t, container){
     container.appendChild( renderer.domElement );
 
 
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    // Add both listeners so it works for mouse and touch
+    document.addEventListener('mousemove', onDocumentMouseMove, { passive: true });
+    document.addEventListener('touchmove', onDocumentMouseMove, { passive: true });
     window.addEventListener( 'resize', onWindowResize, false );
 
     animate()
@@ -147,10 +149,22 @@ function createScene(t, container){
 }
 
 function onDocumentMouseMove( event ) {
+    let x,y;
+    if (event instanceof MouseEvent) {
+        // Mouse event
+        x = event.clientX;
+        y = event.clientY;
+      } else {
+        // Touch event
+        if (event.touches.length > 0) {
+          x = event.touches[0].clientX;
+          y = event.touches[0].clientY;
+        }
+      }
+    mouseX = ( x - windowHalfX ) * 0.25;
+    mouseY = ( y - windowHalfY ) * 0.15;
 
-    mouseX = ( event.clientX - windowHalfX ) * 0.25;
-    mouseY = ( event.clientY - windowHalfY ) * 0.15;
-
+  
 }
 
 function onWindowResize( event ) {

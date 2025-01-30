@@ -6,3 +6,4 @@ static/js/
 scripts
 static/css/*.css
 .codegpt
+static/compiled/*

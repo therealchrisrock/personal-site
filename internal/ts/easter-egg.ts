@@ -1,5 +1,7 @@
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
 // Inactivity time in seconds
-const INACTIVITY_MS = 1 * 1000;
+const INACTIVITY_MS = 15 * 1000;
 let inactivityTimeout: number;
 // Element to show/hide
 let isVisible = false;
@@ -24,6 +26,11 @@ export async function init() {
         element.style.opacity = fadeIn ? "1" : "0";
         element.style.visibility = fadeIn ? "visible" : "hidden";
         element.style.pointerEvents = fadeIn ? "auto" : "none"; // Prevent interaction when hidden
+        if (fadeIn) {
+            disableBodyScroll(element)
+        } else {
+            enableBodyScroll(element)
+        }
         isVisible = fadeIn
     }
 
@@ -69,11 +76,11 @@ const resetEvents = [
 ]
     function handleUserEngagement(event: Event): void {
         console.log(`User engaged with a "${event.type}" event.`);
-        if (isVisible && resetEvents.indexOf(event.type, -1)) fadeElement(container, false);
+        if (isVisible && resetEvents.includes(event.type)) fadeElement(container, false);
             resetInactivityTimer(); // Restart timer after hiding
         // Put your custom logic here.
         // E.g., trigger analytics, mark the session as active, etc.
-    }å
+    }
   
   // Attach listeners for each event in the list
   userEngagementEvents.forEach((eventName) => {

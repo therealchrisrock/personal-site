@@ -4,8 +4,8 @@ import "github.com/a-h/templ"
 
 // Site metadata constants - single source of truth
 const (
-	SiteTitle = "Chris Rock | Creative Developer"
-	SiteDescription = "Interactive cloud animation experience. Mouse-controlled Three.js environment showcasing immersive web development."
+	SiteTitle = "The Real Chris Rock"
+	SiteDescription = "Welcome to my website. Feel free to look around for as long as you like.."
 	SiteURL = "https://chrisrock.ca/"
 	SocialImageURL = "https://chrisrock.ca/static/media/social-card.png"
 	SiteAuthor = "Chris Rock"

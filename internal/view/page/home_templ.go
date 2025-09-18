@@ -47,78 +47,13 @@ func Home(head view.DocumentHead) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			thumbnail := templ.Attributes{"src": "/static/media/github-logo.png"}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header class=\"text-lg space-y-6\"><hgroup><h1 class=\"font-bold\">Chris Rock</h1><h2>Software Developer currently in Toronto</h2></hgroup><address class=\"not-italic\"><a rel=\"author noopener noreferrer\" class=\"email hover-underline-animation left after:bg-black\" href=\"mailto:chris@tilde.technology\">chris@tilde.technology</a><br><a class=\"no-indicator hover-underline-animation left after:bg-black\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://github.com/therealchrisrock\">&#x40;TheRealChrisRock</a></address></header><section class=\"mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-lg\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = component.Card(
-				"No Maintenance",
-				templ.Attributes{"href": "https://nomaintenance.us", "target": "_blank", "rel": "noopener noreferrer"},
-				"Commissioned by No Maintenance, a clothing company based in Los Angeles, to build their webshop and refine their digital strategy.",
-				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/no-maintenance/nomaintenance-webshop"}},
-				[]string{"Design", "Development", "CRO", "Hydrogen", "Consulting", "Ecommerce"},
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = component.Card(
-				"The Poor Man's Token Derugger",
-				templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp", "target": "_blank", "rel": "noopener noreferrer"},
-				"This dapp was designed and developed as part of a joint effort to derug various NFT projects in the Solana ecosystem.",
-				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
-				[]string{"Design", "Development", "Web3", "Solana"},
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = component.Card(
-				"Semantic Document Search",
-				templ.Attributes{"href": "https://github.com/therealchrisrock/document-search", "target": "_blank", "rel": "noopener noreferrer"},
-				"Extracts Markdown and epub into vector embeddings, constructs FAISS index, and queries against them using GPT's completion API.",
-				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/document-search"}},
-				[]string{"Development", "AI", "Similarity Search", "GPT"},
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = component.Card(
-				"Sean Brown",
-				templ.Attributes{"href": "https://curvesbyseanbrown.com/", "target": "_blank", "rel": "noopener noreferrer"},
-				"Hired to design and build their websites, including their blog & webshops using a variety of technologies.",
-				nil,
-				[]string{"Design", "Development", "Ecommerce", "Shopify", "Wordpress", "NextJS"},
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = component.Card(
-				"Casa Bambu",
-				templ.Attributes{"href": "https://casabambuwestbay.com", "target": "_blank", "rel": "noopener noreferrer"},
-				"A bespoke webapp to facilitate the creation and management of rental bookings and invoicing.",
-				&view.CardThumbnail{Img: thumbnail, Link: templ.Attributes{"href": "https://github.com/therealchrisrock/derug-nft-dapp"}},
-				[]string{"Design", "Development", "Web3", "Solana"},
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = component.Card(
-				"Power 2 Motivate",
-				templ.Attributes{"href": "https://power2motivate.com/", "target": "_blank", "rel": "noopener noreferrer"},
-				"Hired by Carlton One to refactor their codebase, rebuild their UI, and redesign the structure of their custom CMS",
-				nil,
-				[]string{"Design", "Development", "DB Design", "CMS Design", "Project Management"},
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section><script src=\"/static/compiled/js/dynamic.js?v={ head.Version }\" data-library=\"easter-egg\"></script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script src=\"/static/compiled/js/dynamic.js?v={ head.Version }\" data-library=\"cloud-standalone\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = template.Base(head).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = template.CloudBase(head).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

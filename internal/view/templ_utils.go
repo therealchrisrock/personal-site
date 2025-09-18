@@ -2,6 +2,16 @@ package view
 
 import "github.com/a-h/templ"
 
+// Site metadata constants - single source of truth
+const (
+	SiteTitle = "Chris Rock | Creative Developer"
+	SiteDescription = "Interactive cloud animation experience. Mouse-controlled Three.js environment showcasing immersive web development."
+	SiteURL = "https://chrisrock.ca/"
+	SocialImageURL = "https://chrisrock.ca/static/media/social-card.png"
+	SiteAuthor = "Chris Rock"
+	SiteThemeColor = "#1e4877"
+)
+
 type DocumentHead struct {
 	PageInfo    PageInfo    // Title, description, canonical URL
 	OGMeta      OGMeta      // Open Graph metadata for social sharing
@@ -52,30 +62,30 @@ type PageAssets struct {
 func DefaultHead() DocumentHead {
 	return DocumentHead{
 		PageInfo: PageInfo{
-			Title:        "Chris Rock's Portfolio",
-			Description:  "Hello, I'm a software developer specializing in building modern web applications, APIs, and data-driven solutions. Available for freelance and collaboration opportunities.",
-			CanonicalURL: "https://chrisrock.ca/",
+			Title:        SiteTitle,
+			Description:  SiteDescription,
+			CanonicalURL: SiteURL,
 		},
 		OGMeta: OGMeta{
-			OGTitle:       "Chris Rock's Portfolio",
-			OGDescription: "Hello, I'm a software developer specializing in building modern web applications, APIs, and data-driven solutions. Available for freelance and collaboration opportunities.",
-			OGImage:       "https://example.com/static/img/default-og-image.jpg",
+			OGTitle:       SiteTitle,
+			OGDescription: SiteDescription,
+			OGImage:       SocialImageURL,
 			OGType:        "website",
-			OGURL:         "https://chrisrock.ca/",
+			OGURL:         SiteURL,
 		},
 		TwitterMeta: TwitterMeta{
 			TwitterCard:        "summary_large_image",
-			TwitterTitle:       "Chris Rock's Portfolio",
-			TwitterDescription: "Hello, I'm a software developer specializing in building modern web applications, APIs, and data-driven solutions. Available for freelance and collaboration opportunities.",
-			TwitterImage:       "https://example.com/static/img/default-twitter-image.jpg",
+			TwitterTitle:       SiteTitle,
+			TwitterDescription: SiteDescription,
+			TwitterImage:       SocialImageURL,
 		},
 		SEOMeta: SEOMeta{
-			Keywords: []string{"website", "awesome", "home"},
-			Author:   "Chris Rock",
+			Keywords: []string{"creative developer", "web development", "interactive design", "three.js", "creative coding"},
+			Author:   SiteAuthor,
 			Robots:   "index, follow",
 		},
 		Assets: PageAssets{
-			ThemeColor: "#ffffff",
+			ThemeColor: SiteThemeColor,
 			CustomCSS:  []string{"/static/css/main.css"},
 			CustomJS:   []string{"/static/js/main.js"},
 		},

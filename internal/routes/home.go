@@ -17,8 +17,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	head := view.DefaultHead()
-	head.PageInfo.Title = "Cloud Animation"
-	head.PageInfo.Description = "Interactive Three.js cloud animation"
 	head.Version = strconv.FormatInt(time.Now().Unix(), 10)
-	middleware.Chain(w, r, page.Clouds(head))
+	middleware.Chain(w, r, page.Home(head))
 }

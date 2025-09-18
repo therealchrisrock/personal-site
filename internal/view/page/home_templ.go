@@ -10,7 +10,6 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"xerus/internal/view"
-	"xerus/internal/view/component"
 	"xerus/internal/view/template"
 )
 

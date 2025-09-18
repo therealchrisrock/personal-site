@@ -8,6 +8,7 @@ type DocumentHead struct {
 	TwitterMeta TwitterMeta // Twitter Card metadata
 	SEOMeta     SEOMeta     // SEO metadata (keywords, robots)
 	Assets      PageAssets  // Assets (favicon, theme color, CSS/JS links)
+	Version     string      // Version string for cache busting
 }
 
 // PageInfo holds general information for the page

@@ -46,7 +46,7 @@ func Clouds(head view.DocumentHead) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script src=\"/static/compiled/js/dynamic.js\" data-library=\"cloud-standalone\"></script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script src=\"/static/compiled/js/dynamic.js?v={ head.Version }\" data-library=\"cloud-standalone\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

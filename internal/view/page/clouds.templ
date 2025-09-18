@@ -6,6 +6,6 @@ import (
 
 templ Clouds(head view.DocumentHead) {
     @template.CloudBase(head) {
-        <script src="/static/compiled/js/dynamic.js" data-library="cloud-standalone"></script>
+        <script src="/static/compiled/js/dynamic.js?v={ head.Version }" data-library="cloud-standalone"></script>
     }
 }

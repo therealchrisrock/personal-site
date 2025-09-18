@@ -5,7 +5,7 @@ import "github.com/a-h/templ"
 // Site metadata constants - single source of truth
 const (
 	SiteTitle = "The Real Chris Rock"
-	SiteDescription = "Welcome to my website. Feel free to look around for as long as you like.."
+	SiteDescription = "Welcome to my website. There's not a whole lot to see right now but feel free to look around for as long as you like.."
 	SiteURL = "https://chrisrock.ca/"
 	SocialImageURL = "https://chrisrock.ca/static/media/social-card.png"
 	SiteAuthor = "Chris Rock"

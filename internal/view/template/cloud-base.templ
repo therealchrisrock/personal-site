@@ -10,6 +10,24 @@ templ CloudBase(head view.DocumentHead) {
 			<title>{ head.PageInfo.Title }</title>
 			<meta name="description" content={ head.PageInfo.Description }>
 			<link rel="canonical" href={ head.PageInfo.CanonicalURL }>
+
+			<!-- Open Graph Meta Tags -->
+			<meta property="og:title" content={ head.OGMeta.OGTitle }>
+			<meta property="og:description" content={ head.OGMeta.OGDescription }>
+			<meta property="og:image" content={ head.OGMeta.OGImage }>
+			<meta property="og:type" content={ head.OGMeta.OGType }>
+			<meta property="og:url" content={ head.OGMeta.OGURL }>
+
+			<!-- Twitter Meta Tags -->
+			<meta name="twitter:card" content={ head.TwitterMeta.TwitterCard }>
+			<meta name="twitter:title" content={ head.TwitterMeta.TwitterTitle }>
+			<meta name="twitter:description" content={ head.TwitterMeta.TwitterDescription }>
+			<meta name="twitter:image" content={ head.TwitterMeta.TwitterImage }>
+
+			<!-- SEO Meta Tags -->
+			<meta name="author" content={ head.SEOMeta.Author }>
+			<meta name="robots" content={ head.SEOMeta.Robots }>
+
 			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 			<style>
 				body {

@@ -13,7 +13,7 @@ import (
 	"xerus/internal/view/template"
 )
 
-func Admin(head view.DocumentHead) templ.Component {
+func Clouds(head view.DocumentHead) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -46,13 +46,13 @@ func Admin(head view.DocumentHead) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header class=\"text-lg space-y-6\"><hgroup><h1 class=\"font-bold\">Chris Rock</h1><h2>Software Developer currently in Toronto</h2></hgroup><address class=\"not-italic\"><a rel=\"author noopener noreferrer\" class=\"email hover-underline-animation left after:bg-black\" href=\"mailto:chris@tilde.technology\">chris@tilde.technology</a><br><a class=\"no-indicator hover-underline-animation left after:bg-black\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://github.com/therealchrisrock\">&#x40;TheRealChrisRock</a> / <a rel=\"noopener noreferrer\" class=\"no-indicator hover-underline-animation left after:bg-black\" target=\"_blank\" href=\"https://github.com/giffen-good\">&#x40;Giffen-Good</a><br></address></header>                  <script src=\"/static/js/dynamic.js\" data-library=\"easter-egg\"></script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script src=\"/static/compiled/js/dynamic.js\" data-library=\"cloud-standalone\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = template.Base(head).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = template.CloudBase(head).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

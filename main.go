@@ -17,6 +17,7 @@ func main() {
 	r.PathPrefix("/static/").HandlerFunc(routes.ServeStaticFiles)
 
 	r.HandleFunc("/", routes.Home)
+	r.HandleFunc("/clouds", routes.Clouds)
 	r.HandleFunc("/admin", routes.Admin)
 	r.HandleFunc("/md/{title}", routes.Markdown)
 	r.HandleFunc("/mantracker", routes.Mantracker)

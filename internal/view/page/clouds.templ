@@ -1,0 +1,11 @@
+package page
+import (
+    "xerus/internal/view/template"
+	"xerus/internal/view"
+)
+
+templ Clouds(head view.DocumentHead) {
+    @template.CloudBase(head) {
+        <script src="/static/compiled/js/dynamic.js" data-library="cloud-standalone"></script>
+    }
+}

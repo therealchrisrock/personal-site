@@ -6,6 +6,10 @@ async function loadLibrary() {
             const EASTER_EGG = await import('./easter-egg');
             await EASTER_EGG.init()
             break
+        case "cloud-standalone":
+            const CLOUD_STANDALONE = await import('./cloud-standalone');
+            CLOUD_STANDALONE.init();
+            break;
         case "d3":
             const D3_MODULE = await import("./mantracker"); // Lazy-load D3 visualization
             D3_MODULE.initD3Visualization();
